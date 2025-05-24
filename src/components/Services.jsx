@@ -6,7 +6,7 @@ import slim_girl from "../assets/slim_girl.jpg";
 
 const ServicesSection = () => {
   return (
-    <div className="px-6 mt-10 lg:px-20 py-16 bg-gray-50">
+    <div className="px-6 mt-10 lg:px-20 py-16 bg-gray-50 max-w-7xl mx-auto">
       {/* Title Section */}
       <div className="flex flex-col items-center mb-16">
         <h1 className="text-4xl font-bold text-center text-orange-600 mb-4">

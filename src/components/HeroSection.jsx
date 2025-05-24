@@ -37,7 +37,7 @@ const HeroSection = () => {
         </div>
 
         {/* Image Section */}
-        <div className="w-140  lg:w-1/2 ">
+        <div className="w-full  lg:w-1/2 ">
           <img
             src={againstWave}
             alt="Fitness Woman"

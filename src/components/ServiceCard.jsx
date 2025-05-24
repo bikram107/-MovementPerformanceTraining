@@ -14,14 +14,14 @@ const ServiceCard = ({
 
   return (
     <div
-      className="flex items-center space-x-8 mx-auto max-w-[90%] md:max-w-[80%] lg:max-w-[60%] mt-8"
-      data-aos="fade-up" // Adding scroll animation to the card
+      className="flex flex-col md:flex-row items-center md:space-x-8 space-y-6 md:space-y-0 mx-auto max-w-[90%] md:max-w-[80%] lg:max-w-[60%] mt-8"
+      data-aos="fade-up"
     >
       <div className="flex-shrink-0">
         <img
           src={imgSrc}
           loading="lazy"
-          className="w-full md:w-60 xl:max-w-xs rounded-lg"
+          className="w-100% md:w-60 xl:max-w-xs rounded-lg"
         />
       </div>
       <div className="flex flex-col justify-between space-y-4 max-w-md">
