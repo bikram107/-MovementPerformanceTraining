@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-secondary: #f9f9f9;
+  --color-primary: #f97316;
+  --color-accent: #ff6b35;
+  --color-tertiary: #00b140;
+}
+
+* {
+  font-family: "Outfit", sans-serif;
+}
