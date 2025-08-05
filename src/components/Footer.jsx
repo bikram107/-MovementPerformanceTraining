@@ -1,56 +1,48 @@
 import React from "react";
-import logo_sign from "../assets/logo_sign.png";
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa"; // Importing social media icons
+import { NavLink } from "react-router-dom";
+import main_logo from "../assets/main_logo.png";
+import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="mt-10 bg-gray-300  py-8">
+    <footer className="mt-10 bg-gray-300 py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo Section */}
           <div className="mb-6 md:mb-0">
-            <div className="flex items-center space-x-4 ">
-              <img src={logo_sign} className="w-9 " />
-              <div
-                style={{ fontFamily: "Dancing Script" }}
-                className=" text-3xl font-extrabold "
-              >
-                MPT
-              </div>
+            <div className="flex items-center space-x-4">
+              <img
+                src={main_logo}
+                className="cursor-pointer"
+                alt="MPT Logo"
+                style={{ height: "60px", width: "auto" }}
+              />
             </div>
           </div>
 
           {/* Quick Links Section */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 flex flex-col items-center text-center">
             <h4 className="text-lg font-semibold mb-3">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="hover:text-gray-400">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-gray-400">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-gray-400">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-gray-400">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              <NavLink to="/" className="hover:text-gray-400">
+                Home
+              </NavLink>
+              <NavLink to="/services" className="hover:text-gray-400">
+                Services
+              </NavLink>
+              <NavLink to="/contact" className="hover:text-gray-400">
+                Contact
+              </NavLink>
+              <NavLink to="/aboutus" className="hover:text-gray-400">
+                About Us
+              </NavLink>
+            </div>
           </div>
 
           {/* Social Media Section */}
-          <div className="mb-6 md:mb-0">
+          <div className="mb-6 md:mb-0 flex flex-col items-center text-center">
             <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               <a
                 href="https://www.facebook.com/movementperformancetraining/"
                 target="_blank"

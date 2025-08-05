@@ -1,12 +1,18 @@
 import React from "react";
 import ServiceCard from "./ServiceCard";
-import kite_surfing from "../assets/kite_surfing.jpg";
+import kitesurfing from "../assets/kitesurfing.jpg";
 import trainer from "../assets/trainer.jpg";
-import slim_girl from "../assets/slim_girl.jpg";
+import progress from "../assets/progress.jpg";
+import strength from "../assets/strength.jpg";
+import Personalised from "../assets/Personalised.jpg";
+import nutrition from "../assets/nutrition.jpg";
+
+const everfitLink = "https://pro.everfit.io/Chloe-Barret-1748488826";
+const squareLink = "https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473";
 
 const ServicesSection = () => {
   return (
-    <div className="px-6 mt-10 lg:px-20 py-16 bg-gray-50 max-w-7xl mx-auto">
+    <div className="px-6 mt-10 lg:px-20 py-16 bg-gray-50 max-w-[90%] mx-auto">
       {/* Title Section */}
       <div className="flex flex-col items-center mb-16">
         <h1 className="text-4xl font-bold text-center text-orange-600 mb-4">
@@ -29,17 +35,23 @@ const ServicesSection = () => {
           <ServiceCard
             productName="Kite Surfing"
             description="Learn the exciting sport of kite surfing with our online courses. Get started with easy-to-follow tutorials and expert tips."
-            imgSrc={kite_surfing}
+            imgSrc={kitesurfing}
+            buttonText="Purchase Package"
+            buttonLink={everfitLink}
           />
           <ServiceCard
             productName="Online Fitness"
             description="Stay fit from the comfort of your home with our virtual fitness classes. Train with expert coaches and stay motivated."
             imgSrc={trainer}
+            buttonText="Purchase Package"
+            buttonLink={everfitLink}
           />
           <ServiceCard
             productName="Nutrition Coaching"
             description="Get personalized nutrition advice to meet your health goals. Our online nutritionists will guide you on your journey."
-            imgSrc={slim_girl}
+            imgSrc={nutrition}
+            buttonText="Purchase Package"
+            buttonLink={everfitLink}
           />
         </div>
       </div>
@@ -53,17 +65,23 @@ const ServicesSection = () => {
           <ServiceCard
             productName="Personal Training"
             description="Work one-on-one with our certified trainers to achieve your fitness goals. Tailored workouts and expert guidance await."
-            imgSrc={trainer}
+            imgSrc={Personalised}
+            buttonText="Book Now"
+            buttonLink={squareLink}
           />
           <ServiceCard
             productName="Strength & Conditioning"
             description="Boost your athletic performance with personalized strength and conditioning programs designed by expert coaches."
-            imgSrc={kite_surfing}
+            imgSrc={strength}
+            buttonText="Book Now"
+            buttonLink={squareLink}
           />
           <ServiceCard
             productName="Weight Loss Program"
             description="Lose weight sustainably with our personalized weight loss program. Get expert guidance on workouts and nutrition."
-            imgSrc={slim_girl}
+            imgSrc={progress}
+            buttonText="Book Now"
+            buttonLink={squareLink}
           />
         </div>
       </div>

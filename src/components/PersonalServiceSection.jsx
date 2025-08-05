@@ -5,6 +5,9 @@ import one_on_one from "../assets/one_on_one.jpg";
 import Personalised from "../assets/Personalised.jpg";
 import progress from "../assets/progress.jpg";
 
+const bookingUrl =
+  "https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473";
+
 const PersonalServiceSection = () => {
   return (
     <section className="bg-gradient-to-b from-orange-50 to-white py-16 px-4 sm:px-8 lg:px-16">
@@ -25,6 +28,7 @@ const PersonalServiceSection = () => {
           image={one_on_one}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
 
         <HomeServiceCard
@@ -33,6 +37,7 @@ const PersonalServiceSection = () => {
           image={Personalised}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
 
         <HomeServiceCard
@@ -41,6 +46,7 @@ const PersonalServiceSection = () => {
           image={progress}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
       </div>
     </section>

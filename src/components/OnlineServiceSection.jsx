@@ -3,7 +3,11 @@ import HomeServiceCard from "./HomeServiceCard";
 import kite_surfing from "../assets/kite_surfing.jpg";
 import lookingAtKite from "../assets/MPT Resources/lookingAtKite.jpg";
 import ManyKites from "../assets/MPT Resources/ManyKites.jpg";
-import againstWave from "../assets/MPT Resources/againstWave.jpg";
+import week from "../assets/week.jpg";
+import fullbody from "../assets/fullbody.jpg";
+import nutrition from "../assets/nutrition.jpg";
+
+const exploreMoreUrl = "https://pro.everfit.io/Chloe-Barret-1748488826";
 
 const OnlineServiceSection = () => {
   return (
@@ -22,27 +26,30 @@ const OnlineServiceSection = () => {
         <HomeServiceCard
           title="6-Week Kitesurfing Performance Program "
           description="Build the strength, mobility, and balance needed to boost your board sports performance, especially for kitesurfing. This 6-week beta program is designed to prep your body with targeted workouts that improve control, reduce injury risk, and help you move better on and off the water. Limited early bird spots available, get in early and level up your ride."
-          image={againstWave}
+          image={week}
           slideDirection="left"
           buttonText="Explore More"
+          buttonLink={exploreMoreUrl}
           subtitle="Push Past Your Limits"
         />
 
         <HomeServiceCard
           title="Full Body Workout Plan"
           description="A structured and progressive fitness program designed to build strength and improve endurance from the comfort of your home."
-          image={ManyKites}
+          image={fullbody}
           slideDirection="left"
           buttonText="Explore More"
+          buttonLink={exploreMoreUrl}
           subtitle="Lets start today"
         />
 
         <HomeServiceCard
           title="Custom Nutrition Coaching"
           description="Get personalized meal plans, expert tips, and ongoing guidance to fuel your goals with our online coaching package."
-          image={lookingAtKite}
+          image={nutrition}
           slideDirection="left"
           buttonText="Explore More"
+          buttonLink={exploreMoreUrl}
           subtitle="Join our forces"
         />
 

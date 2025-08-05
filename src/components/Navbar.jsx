@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo_sign from "../assets/logo_sign.png";
+import main_logo from "../assets/main_logo.png";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -43,9 +43,14 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto flex justify-between items-center p-4">
-          <div className="flex items-center space-x-4">
-            <img src={logo_sign} className="w-9" alt="Logo" />
-            <div className="font-semibold text-3xl">MPT</div>
+          {/* Logo with fixed height to preserve navbar height */}
+          <div className="flex items-center" style={{ height: "40px" }}>
+            <img
+              src={main_logo}
+              alt="Logo"
+              style={{ height: "60px", width: "auto" }}
+              className="cursor-pointer"
+            />
           </div>
 
           <div className="md:flex md:mr-40 items-center space-x-10 font-semibold hidden">

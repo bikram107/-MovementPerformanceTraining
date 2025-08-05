@@ -7,6 +7,7 @@ const HomeServiceCard = ({
   scale = 1,
   slideDirection = "right",
   buttonText = "Learn More",
+  buttonLink = "#", // new prop for button link
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -43,7 +44,6 @@ const HomeServiceCard = ({
         style={{
           transformStyle: "preserve-3d",
           position: "relative",
-          // Inline transform only for mobile toggle
           transform: isMobile
             ? isFlipped
               ? "rotateY(180deg)"
@@ -90,9 +90,14 @@ const HomeServiceCard = ({
             </p>
           </div>
           <div className="flex justify-center mt-6">
-            <button className="text-sm bg-orange-500 text-white px-8 py-2 rounded-full hover:bg-orange-600 transition-colors">
+            <a
+              href={buttonLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm bg-orange-500 text-white px-8 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block"
+            >
               {buttonText}
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -15,13 +15,13 @@ const CallToAction = () => {
 
         <div className="flex justify-center gap-6">
           <a
-            href="/contact"
+            href="https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473"
             className="bg-white text-orange-600 py-3 px-8 rounded-lg font-bold text-lg hover:bg-orange-500 hover:text-white transition-all ease-in-out duration-300 animate__animated animate__fadeIn animate__delay-2s"
           >
             Book a free appointment
           </a>
           <a
-            href="/services"
+            href="https://pro.everfit.io/Chloe-Barret-1748488826"
             className="bg-slate-900 border-2 border-slate-900 py-3 px-8 rounded-lg font-bold text-lg hover:bg-white hover:text-orange-600 transition-all ease-in-out duration-300 animate__animated animate__fadeIn animate__delay-2s"
           >
             Explore Services
