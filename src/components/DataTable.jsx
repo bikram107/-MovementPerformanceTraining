@@ -1,4 +1,4 @@
-export function DataTable({ title, columns, data, highlight }) {
+export function DataTable({ title, columns, data, highlight, onStatusChange }) {
   return (
     <div className="bg-white rounded-2xl shadow-md p-4 overflow-x-auto">
       <h3 className="text-lg font-semibold mb-4 text-orange-600">{title}</h3>
@@ -23,11 +23,34 @@ export function DataTable({ title, columns, data, highlight }) {
                 highlight ? "hover:scale-[1.01]" : ""
               }`}
             >
-              {Object.values(row).map((val, i) => (
-                <td key={i} className="p-3 whitespace-nowrap text-gray-700">
-                  {val}
-                </td>
-              ))}
+              {columns.map((col, i) => {
+                const key = col.toLowerCase();
+                if (col === "Status") {
+                  return (
+                    <td key={i} className="p-3 whitespace-nowrap text-gray-700">
+                      <select
+                        value={row.status}
+                        onChange={(e) =>
+                          onStatusChange &&
+                          onStatusChange(row.id, e.target.value)
+                        }
+                        className="border rounded px-2 py-1"
+                      >
+                        <option value="Pending">New</option>
+                        <option value="In Progress">Contacted</option>
+                        <option value="Resolved">Follwing up</option>
+                        <option value="Closed">Closed</option>
+                      </select>
+                    </td>
+                  );
+                } else {
+                  return (
+                    <td key={i} className="p-3 whitespace-nowrap text-gray-700">
+                      {row[key]}
+                    </td>
+                  );
+                }
+              })}
             </tr>
           ))}
         </tbody>

@@ -1,79 +1,93 @@
-import { StatCard } from "../components/StatCard";
-import { DataTable } from "../components/DataTable";
-import { AnalyticsSection } from "../components/Analyticsection";
 import { useEffect, useState } from "react";
-import { FaEnvelope, FaUser, FaChartBar } from "react-icons/fa";
+import { supabase } from "../supabaseBackend";
+import { LeadsTable } from "../components/LeadsTable";
+import { MessagesTable } from "../components/MessagesTable";
+import { StatCard } from "../components/StatCard";
+
+import { FaUsers, FaEnvelopeOpenText, FaEnvelope } from "react-icons/fa";
 
 export default function AdminDashboard() {
-  const [messages, setMessages] = useState([]);
   const [leads, setLeads] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch leads and messages from Supabase
   useEffect(() => {
-    // Replace with real API calls
-    setMessages([
-      {
-        name: "Alice",
-        email: "alice@example.com",
-        message: "Interested",
-        date: "2025-08-01",
-      },
-      {
-        name: "Alok",
-        email: "alok@example.com",
-        message: "Need help",
-        date: "2025-08-02",
-      },
-    ]);
+    const fetchData = async () => {
+      setLoading(true);
 
-    setLeads([
-      { email: "lead1@example.com", date: "2025-08-01" },
-      { email: "lead2@example.com", date: "2025-08-03" },
-    ]);
+      const { data: leadsData, error: leadsError } = await supabase
+        .from("Leads")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      const { data: messagesData, error: messagesError } = await supabase
+        .from("Messages")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (!leadsError && leadsData) setLeads(leadsData);
+      if (!messagesError && messagesData) setMessages(messagesData);
+
+      setLoading(false);
+    };
+
+    fetchData();
   }, []);
 
+  // Update lead status locally after backend update
+  const handleLeadStatusChange = (id, newStatus) => {
+    setLeads((prevLeads) =>
+      prevLeads.map((lead) =>
+        lead.id === id ? { ...lead, status: newStatus } : lead
+      )
+    );
+  };
+
+  // Mark message as read locally after backend update
+  const handleMarkMessageRead = (id) => {
+    setMessages((prevMessages) =>
+      prevMessages.map((msg) => (msg.id === id ? { ...msg, read: true } : msg))
+    );
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-6 text-orange-700">
+    <main className="p-6 bg-gray-50 min-h-screen max-w-8xl mx-auto">
+      <h1 className="text-4xl font-extrabold mb-10 text-orange-700 tracking-wide drop-shadow-sm">
         Admin Dashboard
       </h1>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+      {/* Stat Cards */}
+      <section className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-14">
+        <StatCard
+          title="Total Leads"
+          value={leads.length}
+          icon={<FaUsers className="text-orange-500" size={28} />}
+        />
+        <StatCard
+          title="Unread Messages"
+          value={messages.filter((msg) => !msg.read).length}
+          icon={<FaEnvelopeOpenText className="text-orange-500" size={28} />}
+        />
         <StatCard
           title="Total Messages"
           value={messages.length}
-          icon={<FaEnvelope />}
+          icon={<FaEnvelope className="text-orange-500" size={28} />}
         />
-        <StatCard title="Total Leads" value={leads.length} icon={<FaUser />} />
-        <StatCard title="Visitors Today" value="123" icon={<FaChartBar />} />
-      </div>
+      </section>
 
-      {/* Messages Table */}
-      <div className="mb-8">
-        <DataTable
-          title="Customer Messages"
-          columns={["Name", "Email", "Message", "Date"]}
-          data={messages.map((m) => ({
-            name: m.name,
-            email: m.email,
-            message: m.message,
-            date: m.date,
-          }))}
-          highlight={true}
-        />
-      </div>
-
-      {/* Leads Table */}
-      <div className="mb-8">
-        <DataTable
-          title="Email Leads"
-          columns={["Email", "Date"]}
-          data={leads.map((l) => ({ email: l.email, date: l.date }))}
-        />
-      </div>
-
-      {/* Google Analytics Section */}
-      <AnalyticsSection />
-    </div>
+      {/* Loading Indicator */}
+      {loading ? (
+        <p className="text-gray-500 text-center text-lg">Loading data...</p>
+      ) : (
+        <section className="space-y-14">
+          <MessagesTable
+            messages={messages}
+            onMarkRead={handleMarkMessageRead}
+          />
+          <LeadsTable leads={leads} onStatusChange={handleLeadStatusChange} />
+        </section>
+      )}
+    </main>
   );
 }
