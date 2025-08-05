@@ -1,52 +1,42 @@
-// ReviewCard.jsx
 import React from "react";
 
-const starsCount = 5;
-
-const ReviewCard = ({ name, profession, testimonial }) => {
+const ReviewCard = ({ name, profession, testimonial, image }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-300 max-w-md mx-auto">
-      {/* Header */}
-      <div className="flex items-center gap-4 px-6 py-4 bg-orange-100 rounded-t-lg">
+    <div
+      className="
+        bg-gradient-to-br from-white to-orange-50
+        rounded-2xl border border-orange-200
+        shadow-lg hover:shadow-2xl transition-shadow duration-300
+        max-w-md mx-auto cursor-default
+        hover:border-orange-400
+        transform hover:-translate-y-1
+        flex flex-col items-center text-center
+        px-6 py-6
+      "
+    >
+      {/* Profile Picture */}
+      <div className="h-24 w-24 rounded-full overflow-hidden ring-4 ring-orange-300 mb-4">
         <img
-          className="h-12 w-12 rounded-full object-cover"
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100"
+          className="h-full w-full object-cover scale-130"
+          src={image}
           alt={`${name} profile`}
           loading="lazy"
         />
-        <div>
-          <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
-          <p className="text-sm text-gray-600">{profession}</p>
-        </div>
       </div>
 
-      {/* Content */}
-      <div className="px-6 py-5">
-        {/* Stars */}
-        <div className="flex gap-1">
-          {[...Array(starsCount)].map((_, i) => (
-            <svg
-              key={i}
-              width="20"
-              height="18"
-              viewBox="0 0 22 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-orange-500 fill-current"
-              aria-hidden="true"
-            >
-              <path
-                d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"
-                fill="currentColor"
-              />
-            </svg>
-          ))}
-        </div>
-
-        <p className="mt-4 text-gray-700 text-sm leading-relaxed">
-          {testimonial}
-        </p>
+      {/* Name and Profession */}
+      <div className="mb-3">
+        <h2 className="text-lg font-bold text-orange-700 leading-tight">{name}</h2>
+        <p className="text-sm text-orange-500 font-semibold">{profession}</p>
       </div>
+
+      {/* Divider line */}
+      <hr className="w-16 border-t-2 border-orange-300 mb-6" />
+
+      {/* Testimonial */}
+      <p className="text-gray-800 text-sm leading-snug text-justify max-w-full">
+        {testimonial}
+      </p>
     </div>
   );
 };

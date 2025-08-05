@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import fitness_girl from "../assets/fitness_girl.png";
-import againstWave from "../assets/MPT Resources/againstWave.jpg";
+import sixweek from "../assets/sixweek.jpg";
 import DownloadButton from "./DownloadButton";
 import PdfDownloadForm from "./PdfDownloadForm";
 
@@ -27,15 +27,14 @@ const HeroSection = () => {
         {/* Text Section */}
         <div className="w-full lg:w-1/2 flex flex-col text-center lg:text-left space-y-6">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            Elevate Your Body. Empower Your Mind.
+            Unlock Your Power < br/> On and Off the Water
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Experience high-performance kitesurfing, personalized fitness plans,
-            and expert guidance — all in one destination.
+            Strength & mobility coaching for kitesurfers, foilers & boardriders
           </p>
           <div className="mt-8 flex items-center ">
             <a
-              href="https://coach.everfit.io/package/ZQ464180"
+              href="https://pro.everfit.io/Chloe-Barret-1748488826"
               target="_blank"
               rel="noopener norefferrer"
               className="inline-block px-6 py-3 text-white font-semibold bg-gray-900 rounded-md hover:bg-gray-700 transition duration-200 mx-2"
@@ -56,7 +55,7 @@ const HeroSection = () => {
         {/* Image Section */}
         <div className="w-full  lg:w-1/2 ">
           <img
-            src={againstWave}
+            src={sixweek}
             alt="Fitness Woman"
             className="w-[100%] h-auto rounded-xl"
             loading="lazy"

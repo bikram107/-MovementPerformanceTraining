@@ -1,42 +1,72 @@
-// Review.jsx
 import React, { useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import nathanm from "../assets/nathanm.jpg";
+import lisa from "../assets/lisa.jpg";
+import nathank from "../assets/nathank.jpg";
+import mrs from "../assets/mrs.jpg";
 
 const Review = () => {
   useEffect(() => {
-    AOS.init({ duration: 1500, once: true });
   }, []);
 
   return (
     <section className="my-12 bg-gray-50 px-4 py-12 sm:px-6 md:px-12 lg:px-20">
       {/* Title */}
       <h1
-        className="text-center font-extrabold text-3xl sm:text-4xl md:text-5xl mb-12 max-w-4xl mx-auto"
-        data-aos="fade-up"
+        className="text-center font-extrabold text-3xl sm:text-4xl md:text-5xl max-w-4xl mx-auto"
       >
-        What Our Happy Customers Think About Us
+        Client&apos;s Trust and Experiences
       </h1>
+
+      {/* Subtitle */}
+      <p
+        className="text-center text-gray-600 text-base sm:text-lg max-w-3xl mx-auto mt-6 mb-12 font-semibold"
+      >
+        Stories from those who have trained with Chloe
+      </p>
 
       {/* Review Cards Grid */}
       <div
-        className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
-        data-aos="fade-up"
+        className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto"
       >
         <ReviewCard
-          name="Ryan"
-          profession="Real estate agent"
-          testimonial="Chloe offers great value personal training. She has a wealth of knowledge and was a great help during my rehabilitation post-injury. I felt that I was in good hands as Chloe created an individual training program for me. She listened, understanding my injury and my goals. Over several weeks we were able to ramp up intensity, making me strong and able to return to the activities that I love."
+          name="Nathan McIntosh"
+          image={nathanm}
+          testimonial="“I CAN JUMP AGAIN!!!” Thank you so much, Chloe — you’ve helped change my life, and I’ll forever be thankful."
         />
 
         <ReviewCard
-          name="Jessica G"
-          profession="Real estate agent"
-          testimonial="I first started working with Chloe during the beginning of the pandemic back in 2020. She’s an absolutely fantastic trainer, with an unbelievable amount of knowledge when it comes to prep for sports (especially water and winter sports!), injury recovery/prevention and of course improving general body composition. She keeps the sessions fun, varied, and efficient… beyond all that, she listens and will work WITH you to achieve the best outcomes. Can’t recommend highly enough."
+          name="Lisa"
+          image={lisa}
+          testimonial={
+            <>
+              🏅 -6 kg in 4 months.<br />
+              In just four months, I shed 6 kg and trimmed down by 6 cm around the hips, 5.5 cm around the waist, and 5 cm around the chest.<br /> My consistency and hard work truly paid off — showing how staying committed leads to real results!
+            </>
+          }
         />
 
-        {/* Add more ReviewCards here if needed */}
+        <ReviewCard
+          name="Mc R Song"
+          image={mrs}
+          testimonial={
+            <>
+              "Chloe offers great value personal training. She has a wealth of knowledge and was a great help during my rehabilitation post-injury.<br /> I felt I was in good hands, as Chloe created a personalised program for me. She listened, understood my injury and goals, and over several weeks, we were able to ramp up intensity — helping me get strong again and return to the activities I love.<br /> I would highly recommend Chloe."
+            </>
+          }
+        />
+
+        <ReviewCard
+          name="Nathan Katterns"
+          image={nathank}
+          testimonial={
+            <>
+              "Chloe from Movement Performance Training knows her stuff and is a great fitness trainer. I’d recommend her to anyone who loves surfing, kitesurfing, or wants to improve their fitness.<br /> She built a program tailored to my injuries and goals, and after just 3 months, I made it to the semi-finals of state titles — I was stoked to be back competing again!<br /> Chloe’s also a great motivator (even though I’m not a huge fan of the gym), and I’ve already seen strength and core improvements." <br /> Thanks, Chloe!
+            </>
+          }
+        />
       </div>
     </section>
   );

@@ -1,6 +1,12 @@
 import React from "react";
 import HomeServiceCard from "./HomeServiceCard";
 import kite_surfing from "../assets/kite_surfing.jpg";
+import one_on_one from "../assets/one_on_one.jpg";
+import Personalised from "../assets/Personalised.jpg";
+import progress from "../assets/progress.jpg";
+
+const bookingUrl =
+  "https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473";
 
 const PersonalServiceSection = () => {
   return (
@@ -19,25 +25,28 @@ const PersonalServiceSection = () => {
         <HomeServiceCard
           title="1-on-1 Coaching Session"
           description="Get direct access to a personal trainer who tailors each session to your unique fitness level and goals."
-          image={kite_surfing}
+          image={one_on_one}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
 
         <HomeServiceCard
           title="Personalized Fitness Plan"
           description="Receive a custom workout routine based on your body type, schedule, and preferences — crafted by experts."
-          image={kite_surfing}
+          image={Personalised}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
 
         <HomeServiceCard
           title="Exclusive Progress Tracking"
           description="We track your progress weekly, adjust your plan, and keep you motivated to ensure long-term results."
-          image={kite_surfing}
+          image={progress}
           slideDirection="left"
           buttonText="Book Now"
+          buttonLink={bookingUrl}
         />
       </div>
     </section>
