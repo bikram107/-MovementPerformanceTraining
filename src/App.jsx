@@ -1,33 +1,57 @@
-import Footer from "./components/Footer";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { useEffect } from "react";
+
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import ServicesPage from "./pages/ServicesPage";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AdminDashboard from "./pages/AdminDashboard";
 import AboutUs from "./pages/AboutUs";
 
-function App() {
+function AppWrapper() {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith("/admin");
+
+  // Optional: scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <Router>
-      <div className="flex flex-col justify-between">
-        <div className="  sticky bg-white top-0 z-50">
+    <div className="flex flex-col justify-between min-h-screen">
+      {/* Only show Navbar if not on admin page */}
+      {!isAdminPage && (
+        <div className="sticky bg-white top-0 z-50">
           <Navbar />
         </div>
-        <div className="min-h-screen">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-          </Routes>
-        </div>
-        <div>
-          <Footer />
-        </div>
+      )}
+      {/* Main Content */}
+      <div className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Routes>
       </div>
-    </Router>
+
+      {/* Only show Footer if not on admin page */}
+      {!isAdminPage && <Footer />}
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <AppWrapper />
+    </Router>
+  );
+}

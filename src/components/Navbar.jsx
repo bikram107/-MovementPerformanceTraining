@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo_sign from "../assets/logo_sign.png";
+import mainLogo from "../assets/MPT Resources/mainLogo.png";
 import { NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -46,6 +47,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <img src={logo_sign} className="w-9" alt="Logo" />
             <div className="font-semibold text-3xl">MPT</div>
+            {/* <img  className="w-20" src={mainLogo} alt="" /> */}
           </div>
 
           <div className="md:flex md:mr-40 items-center space-x-10 font-semibold hidden">
