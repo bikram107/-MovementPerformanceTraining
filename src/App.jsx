@@ -17,6 +17,15 @@ import AboutUs from "./pages/AboutUs";
 function AppWrapper() {
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith("/admin");
+  const loc = useLocation();
+  useEffect(() => {
+    // @ts-ignore
+    window.gtag?.("event", "page_view", {
+      page_location: window.location.href,
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title,
+    });
+  }, [loc.pathname, loc.search]);
 
   // Optional: scroll to top on route change
   useEffect(() => {
