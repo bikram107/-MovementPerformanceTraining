@@ -1,5 +1,5 @@
 import React from "react";
-import introVideo from "../assets/MPT_Resources/introVideo.MOV";
+import introVideo from "../assets/MPT_Resources/introVideo.mov";
 import surfingInWhite from "../assets/MPT_Resources/surfingInWhite.jpg";
 
 const IntroVideo = () => {
