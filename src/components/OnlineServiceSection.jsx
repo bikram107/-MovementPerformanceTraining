@@ -6,6 +6,9 @@ import ManyKites from "../assets/MPT Resources/ManyKites.jpg";
 import week from "../assets/week.jpg";
 import fullbody from "../assets/fullbody.jpg";
 import nutrition from "../assets/nutrition.jpg";
+import one_on_one from "../assets/one_on_one.jpg";
+import elite from "../assets/elite.jpg";
+
 
 const exploreMoreUrl = "https://pro.everfit.io/Chloe-Barret-1748488826";
 
@@ -24,35 +27,44 @@ const OnlineServiceSection = () => {
 
       <div className="flex flex-wrap justify-center gap-6">
         <HomeServiceCard
-          title="6-Week Kitesurfing Performance Program "
-          description="Build the strength, mobility, and balance needed to boost your board sports performance, especially for kitesurfing. This 6-week beta program is designed to prep your body with targeted workouts that improve control, reduce injury risk, and help you move better on and off the water. Limited early bird spots available, get in early and level up your ride."
-          image={week}
+          title="Boardrider Foundations – Gym Edition"
+          description="A beginner-friendly full-body strength and mobility program for boardriders who are new to the gym. Build a strong base with fundamental movement patterns, injury-preventative mobility work, and basic resistance exercises that support better performance on the water."
+          image={one_on_one}
           slideDirection="left"
           buttonText="Explore More"
-          buttonLink={exploreMoreUrl}
+          buttonLink="https://package.everfit.io/TL990649"
           subtitle="Push Past Your Limits"
         />
 
         <HomeServiceCard
-          title="Full Body Workout Plan"
-          description="A structured and progressive fitness program designed to build strength and improve endurance from the comfort of your home."
-          image={fullbody}
+          title="Boardrider Foundations – Home Edition"
+          description="A home-based strength and mobility training plan using body weight, resistance bands, and dumbbells. Designed for those starting out who want to improve their movement quality, strength, and confidence—all without a gym membership."
+          image={one_on_one}
           slideDirection="left"
           buttonText="Explore More"
-          buttonLink={exploreMoreUrl}
+          buttonLink="https://package.everfit.io/CD282183"
           subtitle="Lets start today"
         />
 
         <HomeServiceCard
-          title="Custom Nutrition Coaching"
-          description="Get personalized meal plans, expert tips, and ongoing guidance to fuel your goals with our online coaching package."
+          title="Boardrider Engine – Gym Edition"
+          description="A progressive 3-day gym program for intermediate boardriders ready to take their performance up a notch. This hybrid strength and conditioning plan blends compound lifting, stability drills, and energy system work to build real-world athleticism."
           image={nutrition}
           slideDirection="left"
           buttonText="Explore More"
-          buttonLink={exploreMoreUrl}
+          buttonLink="https://package.everfit.io/BI862404"
           subtitle="Join our forces"
         />
 
+        <HomeServiceCard
+          title="Boardrider Elite – High Performance Program"
+          description="This is the signature Movement Performance Training elite athlete program, built and tested on the training blueprint of a National Freestyle Kitesurfing Champion. Designed for advanced boardriders who want to train like a pro, with a full performance system that evolves every 6 weeks."
+          image={elite}
+          slideDirection="left"
+          buttonText="Explore More"
+          buttonLink="https://package.everfit.io/DH769033"
+          subtitle="Join our forces"
+          />
         {/* <HomeServiceCard
           title="Custom Nutrition Coaching"
           description="Get personalized meal plans, expert tips, and ongoing guidance to fuel your goals with our online coaching package."

@@ -10,7 +10,6 @@ const Contact = () => {
       <ContactForm />
       <FAQ />
       <SocialMediaSection />
-      <MapSection />
     </div>
   );
 };

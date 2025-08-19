@@ -12,17 +12,17 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="w-full bg-gray-50 py-50  ">
-      <div className="max-w-7xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-12  ">
+    <section className="w-full bg-gray-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
         {/* Text Section */}
         <div className="w-full lg:w-1/2 flex flex-col text-center lg:text-left space-y-6">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            Unlock Your Power < br/> On and Off the Water
+          <h1 className="text-4xl sm:text-5xl font-bold text-black">
+            Unlock Your Power <br /> On and Off the Water
           </h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-xl text-gray-600">
             Strength & mobility coaching for kitesurfers, foilers & boardriders
           </p>
-          <div className="mt-8 flex items-center ">
+          <div className="mt-8 flex items-center">
             <a
               href="https://pro.everfit.io/Chloe-Barret-1748488826"
               target="_blank"
@@ -36,22 +36,14 @@ const HeroSection = () => {
         </div>
 
         {/* Image Section */}
-        <div className="w-full  lg:w-1/2 ">
+        <div className="w-full lg:w-1/2">
           <img
             src={sixweek}
-            alt="Fitness Woman"
+            alt="Kitesurfing man"
             className="w-[100%] h-auto rounded-xl"
             loading="lazy"
           />
         </div>
-        {/* <div className="w-140  lg:w-1/2 ">
-          <img
-            src={fitness_girl}
-            alt="Fitness Woman"
-            className="w-[80%] h-auto rounded-xl"
-            loading="lazy"
-          />
-        </div> */}
       </div>
     </section>
   );

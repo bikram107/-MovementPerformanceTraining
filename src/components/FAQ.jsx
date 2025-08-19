@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Searching from "../assets/Searching_vector.svg";
 import question from "../assets/question_svg.svg";
 
 const faqData = [
@@ -72,21 +71,25 @@ const faqData = [
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // Show first 5 if collapsed, all if expanded
+  const visibleFaqs = showAll ? faqData : faqData.slice(0, 5);
+
   return (
-    <section className="py-5 my-20 px-4 max-w-7xl mx-auto bg-gray-50">
+    <section className="py-5 my-10 px-4 max-w-7xl mx-auto bg-gray-50">
       <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
         {/* Left: Accordion */}
         <div className="w-full lg:w-1/2">
           <h2 className="text-3xl font-bold mb-6 text-gray-800">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-4 ">
-            {faqData.map((faq, index) => (
+          <div className="space-y-4">
+            {visibleFaqs.map((faq, index) => (
               <div
                 key={index}
                 className="border hover:border-3 hover:border-orange-500 rounded-md p-4"
@@ -94,6 +97,7 @@ const FAQ = () => {
                 <button
                   className="flex justify-between w-full text-left font-medium text-gray-800 cursor-pointer"
                   onClick={() => toggle(index)}
+                  aria-expanded={openIndex === index}
                 >
                   <span>{faq.question}</span>
                   <span className="text-xl ">
@@ -112,6 +116,19 @@ const FAQ = () => {
               </div>
             ))}
           </div>
+
+          {/* See More / See Less Button */}
+          {faqData.length > 5 && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setShowAll(!showAll)}
+                className="text-orange-600 font-semibold hover:underline focus:outline-none"
+                aria-expanded={showAll}
+              >
+                {showAll ? "See Less ▲" : "See More ▼"}
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Right: Vector/Image */}
