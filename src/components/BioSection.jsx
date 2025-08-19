@@ -1,5 +1,5 @@
 import React from "react";
-import ChloeKiteSurfing from "../assets/MPT Resources/ChloeKiteSurfing.jpg";
+import ChloeKiteSurfing from "../assets/MPT_Resources/ChloeKiteSurfing.jpg";
 
 const BioSection = () => {
   return (

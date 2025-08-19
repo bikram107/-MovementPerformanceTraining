@@ -1,6 +1,6 @@
 import React from "react";
-import hitByWave from "../assets/MPT Resources/hitByWave.jpg";
-import smallKiteSurfing from "../assets/MPT Resources/smallKiteSurfing.JPG";
+import hitByWave from "../assets/MPT_Resources/hitByWave.jpg";
+import smallKiteSurfing from "../assets/MPT_Resources/smallKiteSurfing.JPG";
 
 const ValuesSection = () => {
   return (

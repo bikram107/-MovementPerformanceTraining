@@ -1,8 +1,5 @@
-import React from "react";
 import HomeServiceCard from "./HomeServiceCard";
-import kite_surfing from "../assets/kite_surfing.jpg";
-import lookingAtKite from "../assets/MPT Resources/lookingAtKite.jpg";
-import ManyKites from "../assets/MPT Resources/ManyKites.jpg";
+
 import week from "../assets/week.jpg";
 import fullbody from "../assets/fullbody.jpg";
 import nutrition from "../assets/nutrition.jpg";

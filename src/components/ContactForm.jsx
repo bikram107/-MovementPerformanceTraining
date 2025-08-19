@@ -1,6 +1,34 @@
-import React from "react";
+import { useState } from "react";
+import { supabase } from "../supabaseBackend";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const { error } = await supabase
+      .from("Messages")
+      .insert({ name, email, message });
+
+    if (error) {
+      console.error(error);
+      toast.error("❌ Failed to send message. Please try again.");
+    } else {
+      toast.success("✅ Message submitted successfully!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+
+    setIsSubmitting(false);
+  };
+
   return (
     <section className="bg-white px-6 py-25 max-w-[90%] mx-auto">
       {/* Main Theme Heading */}
@@ -50,13 +78,9 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* Contact Form Panel */}
-        <div className="w-full md:w-1/2 bg-gray-50 rounded-2xl p-10 shadow-lg border border-orange-200">
-          <form
-            action="https://formspree.io/f/your-form-id"
-            method="POST"
-            className="space-y-6"
-          >
+        {/* Contact Form */}
+        <div className="w-full md:w-1/2 bg-white p-6 rounded-2xl shadow-xl border border-orange-100">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label
                 htmlFor="name"
@@ -68,7 +92,9 @@ const ContactForm = () => {
                 type="text"
                 id="name"
                 name="name"
+                value={name}
                 required
+                onChange={(e) => setName(e.target.value)}
                 className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
               />
             </div>
@@ -84,7 +110,9 @@ const ContactForm = () => {
                 type="email"
                 id="email"
                 name="email"
+                value={email}
                 required
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
               />
             </div>
@@ -99,17 +127,22 @@ const ContactForm = () => {
               <textarea
                 id="message"
                 name="message"
-                rows="5"
+                value={message}
+                rows="4"
                 required
-                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white resize-none"
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-orange-500 text-white font-semibold py-3 rounded-full hover:bg-orange-600 transition duration-300"
+              disabled={isSubmitting}
+              className={`bg-orange-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 ${
+                isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+              }`}
             >
-              Send Message
+              {isSubmitting ? "Submitting..." : "Send Message"}
             </button>
           </form>
         </div>

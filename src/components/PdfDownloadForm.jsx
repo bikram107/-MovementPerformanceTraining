@@ -1,34 +1,31 @@
 import React, { useState } from "react";
+import { supabase } from "../supabaseBackend.js";
 
-const PdfDownloadForm = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+const PdfDownloadForm = ({ isOpen, handleClose, submitted, setSubmitted }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("");
 
-  const handleOpen = () => {
-    setIsOpen(true);
-    setSubmitted(false);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // You could also add validation here
-    setSubmitted(true);
+    const { data, error } = await supabase
+      .from("Leads")
+      .insert({ name, email });
+
+    if (error) {
+      console.error(error);
+      setStatus("❌ Error: " + error.message);
+    } else {
+      // console.log("✅ Data inserted:", data);
+      // setStatus("✅ Data submitted successfully!");
+      setName("");
+      setEmail("");
+      setSubmitted(true);
+    }
   };
 
   return (
     <>
-      {/* Trigger Button */}
-      <button
-        onClick={handleOpen}
-        className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-full transition duration-300"
-      >
-        Download PDF
-      </button>
-
       {/* Modal Overlay */}
       {isOpen && (
         <div className="fixed inset-0 backdrop-blur-md flex items-center justify-center z-50">
@@ -54,6 +51,7 @@ const PdfDownloadForm = () => {
                     <input
                       type="text"
                       required
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-400 outline-none"
                     />
                   </div>
@@ -64,6 +62,7 @@ const PdfDownloadForm = () => {
                     <input
                       type="email"
                       required
+                      onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-400 outline-none"
                     />
                   </div>

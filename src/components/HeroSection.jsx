@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import fitness_girl from "../assets/fitness_girl.png";
 import sixweek from "../assets/sixweek.jpg";
 import DownloadButton from "./DownloadButton";
+import PdfDownloadForm from "./PdfDownloadForm";
 
 const HeroSection = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/Fitness_Guide.pdf";
-    link.download = "MovementFitness-Guide.pdf";
-    link.click();
+    // const link = document.createElement("a");
+    // link.href = "/Fitness_Guide.pdf";
+    // link.download = "MovementFitness-Guide.pdf";
+    // link.click();
+    setIsOpen(!isOpen);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSubmitted(false);
   };
 
   return (
@@ -31,7 +41,14 @@ const HeroSection = () => {
             >
               Browse Programs
             </a>
+
             <DownloadButton downloadFunction={handleDownload} />
+            <PdfDownloadForm
+              isOpen={isOpen}
+              handleClose={handleClose}
+              submitted={submitted}
+              setSubmitted={setSubmitted}
+            />
           </div>
         </div>
 
