@@ -30,7 +30,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="bg-white px-6 py-25 max-w-[90%] mx-auto">
+    <section className="bg-white px-6 py-23 max-w-[90%] mx-auto">
       {/* Main Theme Heading */}
       <div className="max-w-7xl mx-auto mb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-orange-500 tracking-wide mb-4">
@@ -135,15 +135,17 @@ const ContactForm = () => {
               />
             </div>
 
+            <div className="flex justify-center">
             <button
-              type="submit"
-              disabled={isSubmitting}
-              className={`bg-orange-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-orange-600 transition duration-300 ${
-                isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-              }`}
+             type="submit"
+             disabled={isSubmitting}
+             className={`bg-orange-500 text-white font-semibold px-10 py-4 text-lg rounded-full hover:bg-orange-600 transition duration-300 ${
+             isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+             }`}
             >
-              {isSubmitting ? "Submitting..." : "Send Message"}
+            {isSubmitting ? "Submitting..." : "Send Message"}
             </button>
+            </div>
           </form>
         </div>
       </div>

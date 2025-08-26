@@ -59,22 +59,7 @@ const Footer = () => {
               >
                 <FaInstagram size={24} />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400"
-              >
-                <FaTwitter size={24} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-700"
-              >
-                <FaLinkedin size={24} />
-              </a>
+
             </div>
           </div>
         </div>

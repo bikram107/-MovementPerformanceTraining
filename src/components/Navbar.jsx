@@ -124,17 +124,18 @@ const Navbar = () => {
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
-              About Us
-            </NavLink>
-            <NavLink
-              to="/services"
-              className="text-orange-500"
-              onClick={() => setIsMobile(false)}
-            >
+           
               Services
             </NavLink>
             <NavLink
               to="/contact"
+              className="text-orange-500"
+              onClick={() => setIsMobile(false)}
+            >
+                 About Us
+            </NavLink>
+            <NavLink
+              to="/services"
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >

@@ -12,7 +12,7 @@ import bannerbottom from "../assets/bannerbottom.jpg";
 
 const Home = () => {
   return (
-    <div className="pt-18">
+    <div className="pt-19">
       {/* First banner */}
       <Banner
         text="Want to get started?, Get your free 3-days trial today"

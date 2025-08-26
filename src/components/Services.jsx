@@ -13,7 +13,7 @@ const squareLink = "https://book.squareup.com/appointments/3csg9f23yp5m96/locati
 
 const ServicesSection = () => {
   return (
-    <div className="px-6 mt-10 lg:px-20 py-16 bg-gray-50 max-w-[90%] mx-auto">
+    <div className="px-6 mt-10 lg:px-20 py-13 bg-gray-50 max-w-[90%] mx-auto">
       {/* Title Section */}
       <div className="flex flex-col items-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-orange-500 tracking-wide mb-6">

@@ -1,13 +1,21 @@
 import React from "react";
+import journey from "../assets/journey.jpg";
 
 const CallToAction = () => {
   return (
-    <section className="bg-orange-500/30 text-white py-20 px-6">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-semibold mb-6 animate__animated animate__fadeIn text-gray-800">
+    <section
+      className="relative text-white py-20 px-6 bg-center bg-cover bg-no-repeat"
+      style={{ backgroundImage: `url(${journey})` }}
+    >
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto text-center z-10">
+        <h2 className="text-4xl font-semibold mb-6 animate__animated animate__fadeIn text-white">
           Ready to Take Your Fitness Journey to the Next Level?
         </h2>
-        <p className="text-lg mb-8 animate__animated animate__fadeIn animate__delay-1s text-gray-700">
+        <p className="text-lg mb-8 animate__animated animate__fadeIn animate__delay-1s text-gray-100">
           Whether you're looking to start your fitness journey or push your
           limits, we're here to help. Join our community of athletes,
           adventurers, and fitness enthusiasts today!

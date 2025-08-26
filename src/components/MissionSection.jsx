@@ -2,7 +2,7 @@ import React from "react";
 
 const MissionSection = () => {
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white py-4 px-6">
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading with Animate.css */}
         <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-6 animate__animated animate__fadeInUp">
