@@ -5,11 +5,28 @@ import toast, { Toaster } from "react-hot-toast";
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState(""); // NEW
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // simple regex for email validation
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate email format
+    if (!isValidEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    // Validate confirm email matches
+    if (email !== confirmEmail) {
+      toast.error("Emails do not match.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     const { error } = await supabase
@@ -18,11 +35,12 @@ const ContactForm = () => {
 
     if (error) {
       console.error(error);
-      toast.error("❌ Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     } else {
       toast.success("✅ Message submitted successfully!");
       setName("");
       setEmail("");
+      setConfirmEmail(""); // reset confirm email too
       setMessage("");
     }
 
@@ -31,13 +49,15 @@ const ContactForm = () => {
 
   return (
     <section className="bg-white px-6 py-25 max-w-[90%] mx-auto">
+      <Toaster />
       {/* Main Theme Heading */}
       <div className="max-w-7xl mx-auto mb-12 text-center">
         <h1 className="text-4xl md:text-5xl font-bold text-orange-500 tracking-wide mb-4">
           Get In Touch With Us
         </h1>
         <p className="mx-auto max-w-xl text-lg md:text-xl text-gray-700 font-light leading-relaxed">
-          We’re here to help — whether you have questions, feedback, or just want to connect with us.
+          We’re here to help — whether you have questions, feedback, or just
+          want to connect with us.
         </p>
       </div>
 
@@ -48,16 +68,26 @@ const ContactForm = () => {
             <h2 className="text-3xl font-bold text-orange-500">Contact Us</h2>
 
             <div>
-              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">Email</h4>
-              <p className="text-gray-600 select-text">chloebarrettraining@icloud.com</p>
+              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">
+                Email
+              </h4>
+              <p className="text-gray-600 select-text">
+                chloebarrettraining@icloud.com
+              </p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">Phone</h4>
+              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">
+                Phone
+              </h4>
               <p className="text-gray-600 select-text">0498 471 509</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">Location</h4>
-              <p className="text-gray-600 select-text">469 Kawana Way, Birtinya QLD 4575</p>
+              <h4 className="font-semibold text-gray-800 text-lg mb-0.5">
+                Location
+              </h4>
+              <p className="text-gray-600 select-text">
+                469 Kawana Way, Birtinya QLD 4575
+              </p>
             </div>
           </div>
 
@@ -81,6 +111,7 @@ const ContactForm = () => {
         {/* Contact Form */}
         <div className="w-full md:w-1/2 bg-white p-6 rounded-2xl shadow-xl border border-orange-100">
           <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name */}
             <div>
               <label
                 htmlFor="name"
@@ -91,14 +122,14 @@ const ContactForm = () => {
               <input
                 type="text"
                 id="name"
-                name="name"
                 value={name}
                 required
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
+                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-orange-500"
               />
             </div>
 
+            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -109,14 +140,32 @@ const ContactForm = () => {
               <input
                 type="email"
                 id="email"
-                name="email"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
+                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-orange-500"
               />
             </div>
 
+            {/* Confirm Email (NEW) */}
+            <div>
+              <label
+                htmlFor="confirmEmail"
+                className="block text-sm font-semibold mb-2 text-orange-600"
+              >
+                Confirm Email
+              </label>
+              <input
+                type="email"
+                id="confirmEmail"
+                value={confirmEmail}
+                required
+                onChange={(e) => setConfirmEmail(e.target.value)}
+                className="w-full border border-orange-300 px-4 py-3 rounded-lg focus:ring-2 focus:ring-orange-500"
+              />
+            </div>
+
+            {/* Message */}
             <div>
               <label
                 htmlFor="message"
@@ -126,15 +175,15 @@ const ContactForm = () => {
               </label>
               <textarea
                 id="message"
-                name="message"
                 value={message}
                 rows="4"
                 required
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-orange-400"
               />
             </div>
 
+            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
