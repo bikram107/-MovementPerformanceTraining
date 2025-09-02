@@ -77,8 +77,8 @@ export default function LeadsManager() {
         </div>
       </div>
 
-      {/* Fixed height scrollable Leads Table */}
-      <div className="h-[690px] overflow-auto border border-orange-200 rounded-lg p-2">
+      {/* Leads Table */}
+      <div className="border border-orange-200 rounded-lg p-4 bg-white shadow-sm">
         {loading ? (
           <p className="text-gray-500">Loading leads...</p>
         ) : (
