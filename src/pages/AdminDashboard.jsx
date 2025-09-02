@@ -24,7 +24,7 @@ export default function AdminDashboard() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md flex flex-col justify-between">
+      <aside className="w-64 bg-white shadow-md flex flex-col justify-between h-screen fixed left-0 top-0">
         <div>
           <h2 className="text-2xl font-bold text-orange-600 p-6">Admin</h2>
           <nav className="flex flex-col space-y-2 px-4">
@@ -82,7 +82,7 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow p-8">
+      <main className="flex-grow p-8 ml-64 overflow-y-auto h-screen">
         {activeTab === "dashboard" && <DashboardOverview />}
         {activeTab === "leads" && <LeadsManager />}
         {activeTab === "messages" && <MessagesManager />}

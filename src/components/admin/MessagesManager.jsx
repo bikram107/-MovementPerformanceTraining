@@ -47,7 +47,9 @@ export default function MessagesManager() {
     <div className="p-4">
       {/* Header and Filters */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-4">
-        <h1 className="text-2xl font-semibold text-orange-600">Manage Messages</h1>
+        <h1 className="text-2xl font-semibold text-orange-600">
+          Manage Messages
+        </h1>
 
         <div className="flex gap-3">
           {/* Status Filter */}
@@ -73,8 +75,8 @@ export default function MessagesManager() {
         </div>
       </div>
 
-      {/* Fixed height scrollable Messages Table */}
-      <div className="h-[690px] overflow-auto border border-orange-200 rounded-lg p-2">
+      {/* Messages Table */}
+      <div className="border border-orange-200 rounded-lg p-4 bg-white shadow-sm">
         {loading ? (
           <p className="text-gray-500">Loading messages...</p>
         ) : (
