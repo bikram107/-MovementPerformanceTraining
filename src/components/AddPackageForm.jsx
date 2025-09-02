@@ -11,7 +11,6 @@ export default function AddPackageForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!name || !description || !image || !link) {
       alert("Please fill out all fields.");
       return;
@@ -59,70 +58,72 @@ export default function AddPackageForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-2xl space-y-4"
+      className="w-full max-w-md mx-auto p-4 md:p-6 bg-white shadow-lg rounded-2xl space-y-4"
     >
-      <h2 className="text-2xl font-semibold text-gray-700">Add New Package</h2>
+      <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
+        Add New Package
+      </h2>
 
-      <div>
-        <label className="block mb-1 text-sm font-medium">Package Name</label>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Package Name</label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border rounded-lg p-2"
+          className="w-full border rounded-lg p-2 text-sm md:text-base"
           required
         />
       </div>
 
-      <div>
-        <label className="block mb-1 text-sm font-medium">Description</label>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Description</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full border rounded-lg p-2"
-          rows="4"
+          className="w-full border rounded-lg p-2 text-sm md:text-base"
+          rows="3"
           required
         />
       </div>
 
-      <div>
-        <label className="block mb-1 text-sm font-medium">Type</label>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Type</label>
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="w-full border rounded-lg p-2"
+          className="w-full border rounded-lg p-2 text-sm md:text-base"
         >
           <option value="online">Online</option>
           <option value="personal">Personal Service</option>
         </select>
       </div>
 
-      <div>
-        <label className="block mb-1 text-sm font-medium">Link</label>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Link</label>
         <input
           type="url"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="w-full border rounded-lg p-2"
           placeholder="https://example.com"
+          className="w-full border rounded-lg p-2 text-sm md:text-base"
           required
         />
       </div>
 
-      <div>
-        <label className="block mb-1 text-sm font-medium">Upload Image</label>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Upload Image</label>
         <input
           type="file"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
-          className="w-full border rounded-lg p-2"
+          className="w-full border rounded-lg p-2 text-sm md:text-base"
         />
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 disabled:opacity-50"
+        className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 disabled:opacity-50 text-sm md:text-base"
       >
         {loading ? "Adding..." : "Add Package"}
       </button>

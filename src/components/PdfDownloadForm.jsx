@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../supabaseBackend.js";
+import eBook from "../assets/eBook.pdf";
 
 const PdfDownloadForm = ({ isOpen, handleClose, submitted, setSubmitted }) => {
   const [name, setName] = useState("");
@@ -80,7 +81,7 @@ const PdfDownloadForm = ({ isOpen, handleClose, submitted, setSubmitted }) => {
                   Thank you!
                 </h3>
                 <a
-                  href="/assets/fitness-guide.pdf" // adjust this path
+                  href={eBook}// adjust this path
                   download
                   className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-full inline-block"
                 >

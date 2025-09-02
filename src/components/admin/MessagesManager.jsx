@@ -5,8 +5,8 @@ import { MessagesTable } from "../MessagesTable";
 export default function MessagesManager() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [sortOption, setSortOption] = useState("newest"); // NEW
-  const [statusFilter, setStatusFilter] = useState("all"); // NEW
+  const [sortOption, setSortOption] = useState("newest");
+  const [statusFilter, setStatusFilter] = useState("all");
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -29,8 +29,8 @@ export default function MessagesManager() {
       }
 
       const { data, error } = await query;
-
       if (!error && data) setMessages(data);
+
       setLoading(false);
     };
 
@@ -44,11 +44,10 @@ export default function MessagesManager() {
   };
 
   return (
-    <div>
+    <div className="p-4">
+      {/* Header and Filters */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-4">
-        <h1 className="text-2xl font-semibold text-orange-600">
-          Manage Messages
-        </h1>
+        <h1 className="text-2xl font-semibold text-orange-600">Manage Messages</h1>
 
         <div className="flex gap-3">
           {/* Status Filter */}
@@ -58,8 +57,8 @@ export default function MessagesManager() {
             className="border border-orange-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-orange-500"
           >
             <option value="all">All Messages</option>
-            <option value="unread">Unread Only</option>
-            <option value="read">Read Only</option>
+            <option value="unread">Unread</option>
+            <option value="read">Read</option>
           </select>
 
           {/* Sort Dropdown */}
@@ -74,11 +73,14 @@ export default function MessagesManager() {
         </div>
       </div>
 
-      {loading ? (
-        <p className="text-gray-500">Loading messages...</p>
-      ) : (
-        <MessagesTable messages={messages} onMarkRead={handleMarkRead} />
-      )}
+      {/* Fixed height scrollable Messages Table */}
+      <div className="h-[690px] overflow-auto border border-orange-200 rounded-lg p-2">
+        {loading ? (
+          <p className="text-gray-500">Loading messages...</p>
+        ) : (
+          <MessagesTable messages={messages} onMarkRead={handleMarkRead} />
+        )}
+      </div>
     </div>
   );
 }

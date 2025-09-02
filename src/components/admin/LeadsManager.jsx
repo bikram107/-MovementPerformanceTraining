@@ -6,7 +6,7 @@ export default function LeadsManager() {
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sortOption, setSortOption] = useState("newest");
-  const [statusFilter, setStatusFilter] = useState("all"); // NEW
+  const [statusFilter, setStatusFilter] = useState("all");
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -14,12 +14,12 @@ export default function LeadsManager() {
 
       let query = supabase.from("Leads").select("*");
 
-      // apply status filter
+      // Apply status filter
       if (statusFilter !== "all") {
         query = query.eq("status", statusFilter);
       }
 
-      // apply sort
+      // Apply sort
       if (sortOption === "newest") {
         query = query.order("created_at", { ascending: false });
       } else if (sortOption === "oldest") {
@@ -46,7 +46,8 @@ export default function LeadsManager() {
   };
 
   return (
-    <div>
+    <div className="p-4">
+      {/* Header and Filters */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-4">
         <h1 className="text-2xl font-semibold text-orange-600">Manage Leads</h1>
 
@@ -76,11 +77,14 @@ export default function LeadsManager() {
         </div>
       </div>
 
-      {loading ? (
-        <p className="text-gray-500">Loading leads...</p>
-      ) : (
-        <LeadsTable leads={leads} onStatusChange={handleLeadStatusChange} />
-      )}
+      {/* Fixed height scrollable Leads Table */}
+      <div className="h-[690px] overflow-auto border border-orange-200 rounded-lg p-2">
+        {loading ? (
+          <p className="text-gray-500">Loading leads...</p>
+        ) : (
+          <LeadsTable leads={leads} onStatusChange={handleLeadStatusChange} />
+        )}
+      </div>
     </div>
   );
 }

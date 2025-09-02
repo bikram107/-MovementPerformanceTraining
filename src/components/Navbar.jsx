@@ -120,7 +120,7 @@ const Navbar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/aboutus"
+              to="/services"
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
@@ -128,14 +128,14 @@ const Navbar = () => {
               Services
             </NavLink>
             <NavLink
-              to="/contact"
+              to="/aboutus"
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
                  About Us
             </NavLink>
             <NavLink
-              to="/services"
+              to="/contact"
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
