@@ -34,75 +34,97 @@ export default function PackageList() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Packages</h2>
+    <div className="max-w-6xl mx-auto mt-8 px-4">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Packages</h2>
 
       {loading ? (
-        <p className="text-center">Loading...</p>
+        <p className="text-center text-gray-500">Loading...</p>
+      ) : packages.length === 0 ? (
+        <p className="text-center text-gray-500">No packages found.</p>
       ) : (
-        <table className="w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="border p-2">Image</th>
-              <th className="border p-2">Name</th>
-              <th className="border p-2">Description</th>
-              <th className="border p-2">Type</th>
-              <th className="border p-2">Link</th>
-              <th className="border p-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {packages.map((pkg) => (
-              <tr key={pkg.id}>
-                <td className="border p-2 text-center">
-                  {pkg.image_url ? (
+        <div className="overflow-hidden rounded-xl shadow-md bg-white">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Image
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Name
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Description
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Type
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Link
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {packages.map((pkg) => (
+                <tr key={pkg.id} className="hover:bg-gray-50 transition">
+                  <td className="px-6 py-4">
+                    {pkg.image_url ? (
+                      <a
+                        href={pkg.image_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-block"
+                      >
+                        <img
+                          src={pkg.image_url}
+                          alt={pkg.name}
+                          className="w-16 h-16 object-cover rounded-md shadow-sm hover:opacity-90"
+                        />
+                      </a>
+                    ) : (
+                      <span className="text-gray-400 italic">No Image</span>
+                    )}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-gray-800">
+                    {pkg.name}
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">{pkg.description}</td>
+                  <td className="px-6 py-4 capitalize text-gray-600">
+                    {pkg.type}
+                  </td>
+                  <td className="px-6 py-4">
                     <a
-                      href={pkg.image_url}
+                      href={pkg.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-block"
+                      className="text-blue-600 hover:underline break-all"
                     >
-                      <img
-                        src={pkg.image_url}
-                        alt={pkg.name}
-                        className="w-16 h-16 object-cover rounded hover:opacity-80"
-                      />
+                      {pkg.link}
                     </a>
-                  ) : (
-                    "No Image"
-                  )}
-                </td>
-                <td className="border p-2">{pkg.name}</td>
-                <td className="border p-2">{pkg.description}</td>
-                <td className="border p-2 capitalize">{pkg.type}</td>
-                <td className="border p-2">
-                  <a
-                    href={pkg.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-blue-500 underline"
-                  >
-                    {pkg.link}
-                  </a>
-                </td>
-                <td className="border p-2 space-x-2">
-                  <button
-                    onClick={() => setEditingPkg(pkg)}
-                    className="bg-blue-500 text-white px-2 py-1 rounded"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(pkg.id)}
-                    className="bg-red-500 text-white px-2 py-1 rounded"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => setEditingPkg(pkg)}
+                        className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm transition"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(pkg.id)}
+                        className="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm transition"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {editingPkg && (
