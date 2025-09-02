@@ -6,6 +6,7 @@ import {
   FaBox,
   FaTachometerAlt,
   FaSignOutAlt,
+  FaBars,
 } from "react-icons/fa";
 
 import DashboardOverview from "../components/admin/DashboardOverview";
@@ -15,6 +16,7 @@ import PackagesManager from "../components/admin/PackagesManager";
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
+  const [collapsed, setCollapsed] = useState(false);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -24,49 +26,68 @@ export default function AdminDashboard() {
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md flex flex-col justify-between h-screen fixed left-0 top-0">
+      <aside
+        className={`${
+          collapsed ? "w-20" : "w-64"
+        } bg-white shadow-md flex flex-col justify-between h-screen fixed left-0 top-0 transition-all duration-300`}
+      >
         <div>
-          <h2 className="text-2xl font-bold text-orange-600 p-6">Admin</h2>
-          <nav className="flex flex-col space-y-2 px-4">
+          <div className="flex items-center justify-between p-6">
+            {!collapsed && (
+              <h2 className="text-2xl font-bold text-orange-600">Admin</h2>
+            )}
+            <button
+              onClick={() => setCollapsed(!collapsed)}
+              className="text-gray-600 hover:text-orange-600"
+            >
+              <FaBars />
+            </button>
+          </div>
+
+          <nav className="flex flex-col space-y-2 px-2">
             <button
               onClick={() => setActiveTab("dashboard")}
-              className={`text-left px-3 py-2 rounded-lg ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
                 activeTab === "dashboard"
                   ? "bg-orange-100 text-orange-600 font-semibold"
                   : "hover:bg-gray-100"
               }`}
             >
-              <FaTachometerAlt className="inline mr-2" /> Dashboard
+              <FaTachometerAlt />
+              {!collapsed && "Dashboard"}
             </button>
             <button
               onClick={() => setActiveTab("leads")}
-              className={`text-left px-3 py-2 rounded-lg ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
                 activeTab === "leads"
                   ? "bg-orange-100 text-orange-600 font-semibold"
                   : "hover:bg-gray-100"
               }`}
             >
-              <FaUsers className="inline mr-2" /> Leads
+              <FaUsers />
+              {!collapsed && "Leads"}
             </button>
             <button
               onClick={() => setActiveTab("messages")}
-              className={`text-left px-3 py-2 rounded-lg ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
                 activeTab === "messages"
                   ? "bg-orange-100 text-orange-600 font-semibold"
                   : "hover:bg-gray-100"
               }`}
             >
-              <FaEnvelope className="inline mr-2" /> Messages
+              <FaEnvelope />
+              {!collapsed && "Messages"}
             </button>
             <button
               onClick={() => setActiveTab("packages")}
-              className={`text-left px-3 py-2 rounded-lg ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
                 activeTab === "packages"
                   ? "bg-orange-100 text-orange-600 font-semibold"
                   : "hover:bg-gray-100"
               }`}
             >
-              <FaBox className="inline mr-2" /> Packages
+              <FaBox />
+              {!collapsed && "Packages"}
             </button>
           </nav>
         </div>
@@ -76,13 +97,18 @@ export default function AdminDashboard() {
             onClick={handleLogout}
             className="flex items-center gap-2 px-4 py-2 w-full bg-gray-200 hover:bg-gray-300 rounded-lg"
           >
-            <FaSignOutAlt /> Logout
+            <FaSignOutAlt />
+            {!collapsed && "Logout"}
           </button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-grow p-8 ml-64 overflow-y-auto h-screen">
+      <main
+        className={`flex-grow p-8 transition-all duration-300 ${
+          collapsed ? "ml-20" : "ml-64"
+        } overflow-y-auto h-screen`}
+      >
         {activeTab === "dashboard" && <DashboardOverview />}
         {activeTab === "leads" && <LeadsManager />}
         {activeTab === "messages" && <MessagesManager />}
