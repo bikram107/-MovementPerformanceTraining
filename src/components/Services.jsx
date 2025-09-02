@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 import one_on_one from "../assets/one_on_one.jpg";
 import trainer from "../assets/trainer.jpg";
@@ -7,11 +7,35 @@ import strength from "../assets/strength.jpg";
 import Personalised from "../assets/Personalised.jpg";
 import nutrition from "../assets/nutrition.jpg";
 import elite from "../assets/elite.jpg";
+import { supabase } from "../supabaseBackend";
 
 const everfitLink = "https://pro.everfit.io/Chloe-Barret-1748488826";
-const squareLink = "https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473";
+const squareLink =
+  "https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473";
 
 const ServicesSection = () => {
+  const [packages, setPackages] = useState([]);
+
+  useEffect(() => {
+    const fetchPackages = async () => {
+      const { data, error } = await supabase
+        .from("packages")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching packages:", error);
+      } else {
+        setPackages(data);
+      }
+    };
+
+    fetchPackages();
+  }, []);
+
+  const onlinePackages = packages.filter((pkg) => pkg.type === "online");
+  const personalPackages = packages.filter((pkg) => pkg.type === "personal");
+
   return (
     <div className="px-6 mt-10 lg:px-20 py-13 bg-gray-50 max-w-[90%] mx-auto">
       {/* Title Section */}
@@ -33,6 +57,7 @@ const ServicesSection = () => {
           Online Packages
         </h2>
         <div className="flex flex-col justify-center gap-10">
+          {/* Hardcoded Online Services */}
           <ServiceCard
             productName="Boardrider Foundations – Gym Edition"
             description="A beginner-friendly full-body strength and mobility program for boardriders who are new to the gym."
@@ -61,6 +86,18 @@ const ServicesSection = () => {
             buttonText="Purchase Package"
             buttonLink="https://package.everfit.io/DH769033"
           />
+
+          {/* Dynamic Online Packages from DB */}
+          {onlinePackages.map((pkg) => (
+            <ServiceCard
+              key={pkg.id}
+              productName={pkg.name}
+              description={pkg.description}
+              imgSrc={pkg.image_url}
+              buttonText="Purchase Package"
+              buttonLink={pkg.link}
+            />
+          ))}
         </div>
       </div>
 
@@ -70,6 +107,7 @@ const ServicesSection = () => {
           Personal Services
         </h2>
         <div className="flex flex-col justify-center gap-10">
+          {/* Hardcoded Personal Services */}
           <ServiceCard
             productName="Personal Training"
             description="Work one-on-one with our certified trainers to achieve your fitness goals. Tailored workouts and expert guidance await."
@@ -91,6 +129,18 @@ const ServicesSection = () => {
             buttonText="Book Now"
             buttonLink={squareLink}
           />
+
+          {/* Dynamic Personal Packages from DB */}
+          {personalPackages.map((pkg) => (
+            <ServiceCard
+              key={pkg.id}
+              productName={pkg.name}
+              description={pkg.description}
+              imgSrc={pkg.image_url}
+              buttonText="Book Now"
+              buttonLink={pkg.link}
+            />
+          ))}
         </div>
       </div>
     </div>

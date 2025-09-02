@@ -1,93 +1,93 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { supabase } from "../supabaseBackend";
-import { LeadsTable } from "../components/LeadsTable";
-import { MessagesTable } from "../components/MessagesTable";
-import { StatCard } from "../components/StatCard";
+import {
+  FaUsers,
+  FaEnvelope,
+  FaBox,
+  FaTachometerAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
-import { FaUsers, FaEnvelopeOpenText, FaEnvelope } from "react-icons/fa";
+import DashboardOverview from "../components/admin/DashboardOverview";
+import LeadsManager from "../components/admin/LeadsManager";
+import MessagesManager from "../components/admin/MessagesManager";
+import PackagesManager from "../components/admin/PackagesManager";
 
 export default function AdminDashboard() {
-  const [leads, setLeads] = useState([]);
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("dashboard");
 
-  // Fetch leads and messages from Supabase
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-
-      const { data: leadsData, error: leadsError } = await supabase
-        .from("Leads")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      const { data: messagesData, error: messagesError } = await supabase
-        .from("Messages")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (!leadsError && leadsData) setLeads(leadsData);
-      if (!messagesError && messagesData) setMessages(messagesData);
-
-      setLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
-  // Update lead status locally after backend update
-  const handleLeadStatusChange = (id, newStatus) => {
-    setLeads((prevLeads) =>
-      prevLeads.map((lead) =>
-        lead.id === id ? { ...lead, status: newStatus } : lead
-      )
-    );
-  };
-
-  // Mark message as read locally after backend update
-  const handleMarkMessageRead = (id) => {
-    setMessages((prevMessages) =>
-      prevMessages.map((msg) => (msg.id === id ? { ...msg, read: true } : msg))
-    );
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    window.location.href = "/login";
   };
 
   return (
-    <main className="p-6 bg-gray-50 min-h-screen max-w-8xl mx-auto">
-      <h1 className="text-4xl font-extrabold mb-10 text-orange-700 tracking-wide drop-shadow-sm">
-        Admin Dashboard
-      </h1>
+    <div className="flex min-h-screen bg-gray-100">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white shadow-md flex flex-col justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-orange-600 p-6">Admin</h2>
+          <nav className="flex flex-col space-y-2 px-4">
+            <button
+              onClick={() => setActiveTab("dashboard")}
+              className={`text-left px-3 py-2 rounded-lg ${
+                activeTab === "dashboard"
+                  ? "bg-orange-100 text-orange-600 font-semibold"
+                  : "hover:bg-gray-100"
+              }`}
+            >
+              <FaTachometerAlt className="inline mr-2" /> Dashboard
+            </button>
+            <button
+              onClick={() => setActiveTab("leads")}
+              className={`text-left px-3 py-2 rounded-lg ${
+                activeTab === "leads"
+                  ? "bg-orange-100 text-orange-600 font-semibold"
+                  : "hover:bg-gray-100"
+              }`}
+            >
+              <FaUsers className="inline mr-2" /> Leads
+            </button>
+            <button
+              onClick={() => setActiveTab("messages")}
+              className={`text-left px-3 py-2 rounded-lg ${
+                activeTab === "messages"
+                  ? "bg-orange-100 text-orange-600 font-semibold"
+                  : "hover:bg-gray-100"
+              }`}
+            >
+              <FaEnvelope className="inline mr-2" /> Messages
+            </button>
+            <button
+              onClick={() => setActiveTab("packages")}
+              className={`text-left px-3 py-2 rounded-lg ${
+                activeTab === "packages"
+                  ? "bg-orange-100 text-orange-600 font-semibold"
+                  : "hover:bg-gray-100"
+              }`}
+            >
+              <FaBox className="inline mr-2" /> Packages
+            </button>
+          </nav>
+        </div>
 
-      {/* Stat Cards */}
-      <section className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-14">
-        <StatCard
-          title="Total Leads"
-          value={leads.length}
-          icon={<FaUsers className="text-orange-500" size={28} />}
-        />
-        <StatCard
-          title="Unread Messages"
-          value={messages.filter((msg) => !msg.read).length}
-          icon={<FaEnvelopeOpenText className="text-orange-500" size={28} />}
-        />
-        <StatCard
-          title="Total Messages"
-          value={messages.length}
-          icon={<FaEnvelope className="text-orange-500" size={28} />}
-        />
-      </section>
+        <div className="p-4">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 w-full bg-gray-200 hover:bg-gray-300 rounded-lg"
+          >
+            <FaSignOutAlt /> Logout
+          </button>
+        </div>
+      </aside>
 
-      {/* Loading Indicator */}
-      {loading ? (
-        <p className="text-gray-500 text-center text-lg">Loading data...</p>
-      ) : (
-        <section className="space-y-14">
-          <MessagesTable
-            messages={messages}
-            onMarkRead={handleMarkMessageRead}
-          />
-          <LeadsTable leads={leads} onStatusChange={handleLeadStatusChange} />
-        </section>
-      )}
-    </main>
+      {/* Main Content */}
+      <main className="flex-grow p-8">
+        {activeTab === "dashboard" && <DashboardOverview />}
+        {activeTab === "leads" && <LeadsManager />}
+        {activeTab === "messages" && <MessagesManager />}
+        {activeTab === "packages" && <PackagesManager />}
+      </main>
+    </div>
   );
 }
