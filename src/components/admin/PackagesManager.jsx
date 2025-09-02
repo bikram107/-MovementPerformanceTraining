@@ -9,7 +9,6 @@ export default function PackagesManager() {
         <h1 className="text-2xl font-semibold text-orange-600">
           Manage Packages
         </h1>
-        
       </div>
 
       {/* Scrollable container */}
@@ -19,7 +18,8 @@ export default function PackagesManager() {
           <AddPackageForm />
         </div>
 
-        <div className="flex-1 min-h-[150px] overflow-auto">
+        {/* Package list without its own scroll */}
+        <div>
           <PackageList />
         </div>
       </div>

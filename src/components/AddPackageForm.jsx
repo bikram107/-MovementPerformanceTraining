@@ -5,6 +5,7 @@ export default function AddPackageForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [type, setType] = useState("online");
   const [link, setLink] = useState("");
   const [loading, setLoading] = useState(false);
@@ -41,85 +42,123 @@ export default function AddPackageForm() {
 
       if (insertError) throw insertError;
 
-      alert("Package added successfully!");
+      alert("✅ Package added successfully!");
       setName("");
       setDescription("");
       setImage(null);
+      setPreview(null);
       setType("online");
       setLink("");
     } catch (err) {
       console.error(err);
-      alert("Error adding package: " + err.message);
+      alert("❌ Error adding package: " + err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    } else {
+      setPreview(null);
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-md mx-auto p-4 md:p-6 bg-white shadow-lg rounded-2xl space-y-4"
+      className="max-w-lg mx-auto p-8 bg-white shadow-xl rounded-2xl space-y-6 border border-gray-100"
     >
-      <h2 className="text-xl md:text-2xl font-semibold text-gray-700">
-        Add New Package
-      </h2>
+      <h2 className="text-2xl font-bold text-gray-800">Add New Package</h2>
+      <p className="text-sm text-gray-500">
+        Fill out the details below to create a new package.
+      </p>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Package Name</label>
+      {/* Package Name */}
+      <div>
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          Package Name
+        </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border rounded-lg p-2 text-sm md:text-base"
+          className="w-full border rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm"
           required
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Description</label>
+      {/* Description */}
+      <div>
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          Description
+        </label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full border rounded-lg p-2 text-sm md:text-base"
-          rows="3"
+          className="w-full border rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm"
+          rows="4"
           required
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Type</label>
+      {/* Type */}
+      <div>
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          Type
+        </label>
         <select
           value={type}
           onChange={(e) => setType(e.target.value)}
-          className="w-full border rounded-lg p-2 text-sm md:text-base"
+          className="w-full border rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm"
         >
           <option value="online">Online</option>
           <option value="personal">Personal Service</option>
         </select>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Link</label>
+      {/* Link */}
+      <div>
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          Link
+        </label>
         <input
           type="url"
           value={link}
           onChange={(e) => setLink(e.target.value)}
+          className="w-full border rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm"
           placeholder="https://example.com"
-          className="w-full border rounded-lg p-2 text-sm md:text-base"
           required
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">Upload Image</label>
+      {/* Image Upload */}
+      <div>
+        <label className="block mb-2 text-sm font-medium text-gray-700">
+          Upload Image
+        </label>
         <input
           type="file"
           accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-          className="w-full border rounded-lg p-2 text-sm md:text-base"
+          onChange={handleImageChange}
+          className="w-full border rounded-lg p-2 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm"
         />
+        {preview && (
+          <div className="mt-4">
+            <p className="text-sm text-gray-600 mb-2">Preview:</p>
+            <img
+              src={preview}
+              alt="Preview"
+              className="w-32 h-32 object-cover rounded-lg shadow-md border"
+            />
+          </div>
+        )}
       </div>
 
+      {/* Submit */}
       <button
         type="submit"
         disabled={loading}
