@@ -74,7 +74,7 @@ const PdfDownloadForm = ({ isOpen, handleClose }) => {
               />
               <input
                 type="email"
-                placeholder="Gmail address"
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

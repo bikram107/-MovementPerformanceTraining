@@ -9,6 +9,7 @@ import PdfDownloadForm from "../components/PdfDownloadForm";
 import Banner from "../components/Banner";
 import bannertop from "../assets/bannertop.jpg";
 import bannerbottom from "../assets/bannerbottom.jpg"; 
+import BackToTopButton from "../components/BackToTopButton";
 
 const Home = () => {
   return (
@@ -34,6 +35,7 @@ const Home = () => {
       <PersonalServiceSection />
       <AppointmentSection />
       <Review />
+      <BackToTopButton />
     </div>
   );
 };

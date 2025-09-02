@@ -3,6 +3,7 @@ import BioSection from "../components/BioSection";
 import MissionSection from "../components/MissionSection";
 import ValuesSection from "../components/ValuesSection";
 import CallToAction from "../components/CallToAction";
+import BackToTopButton from "../components/BackToTopButton";
 
 const AboutUs = () => {
   return (
@@ -11,6 +12,7 @@ const AboutUs = () => {
       <BioSection />
       <ValuesSection />
       <CallToAction />
+      <BackToTopButton />
     </div>
   );
 };
