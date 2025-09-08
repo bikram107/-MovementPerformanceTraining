@@ -4,8 +4,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useEffect, useLayoutEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -24,6 +23,24 @@ function AppWrapper() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  if (import.meta.env.VITE_GA_ID) {
+    const script1 = document.createElement("script");
+    script1.async = true;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${
+      import.meta.env.VITE_GA_ID
+    }`;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement("script");
+    script2.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${import.meta.env.VITE_GA_ID}');
+  `;
+    document.head.appendChild(script2);
+  }
 
   return (
     <div className="flex flex-col justify-between min-h-screen">

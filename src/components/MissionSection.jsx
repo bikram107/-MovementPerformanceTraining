@@ -14,7 +14,7 @@ const MissionSection = () => {
 
         {/* Paragraph with Animate.css */}
         <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-0.5s">
-          At Movement Performance Training, our mission is simple — to inspire,
+          At Movement Performance Training, our mission is simple, to inspire,
           empower, and guide individuals toward a stronger, healthier, and more
           adventurous life. We believe in creating lasting change through
           education, support, and a passion for movement, both on land and in

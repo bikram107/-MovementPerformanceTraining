@@ -54,32 +54,24 @@ const Navbar = () => {
           </div>
 
           <div className="md:flex md:mr-40 items-center space-x-10 font-semibold hidden">
-            {["/", "/services", "/contact", "/aboutus", "/admin"].map(
-              (path, index) => {
-                const labels = [
-                  "Home",
-                  "Services",
-                  "Contact",
-                  "About Us",
-                  "Admin",
-                ];
-                return (
-                  <NavLink
-                    key={path}
-                    to={path}
-                    className={({ isActive }) =>
-                      `pb-1 transform ${
-                        isActive
-                          ? "border-b-4 border-orange-400 text-orange-500 -translate-y-1"
-                          : "hover:text-gray-400"
-                      } transition-transform transition-colors duration-300 ease-in-out`
-                    }
-                  >
-                    {labels[index]}
-                  </NavLink>
-                );
-              }
-            )}
+            {["/", "/services", "/contact", "/aboutus"].map((path, index) => {
+              const labels = ["Home", "Services", "Contact", "About Us"];
+              return (
+                <NavLink
+                  key={path}
+                  to={path}
+                  className={({ isActive }) =>
+                    `pb-1 transform ${
+                      isActive
+                        ? "border-b-4 border-orange-400 text-orange-500 -translate-y-1"
+                        : "hover:text-gray-400"
+                    } transition-transform transition-colors duration-300 ease-in-out`
+                  }
+                >
+                  {labels[index]}
+                </NavLink>
+              );
+            })}
           </div>
 
           <div className="md:hidden" onClick={toggleMenu}>
@@ -124,7 +116,6 @@ const Navbar = () => {
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
-           
               Services
             </NavLink>
             <NavLink
@@ -132,7 +123,7 @@ const Navbar = () => {
               className="text-orange-500"
               onClick={() => setIsMobile(false)}
             >
-                 About Us
+              About Us
             </NavLink>
             <NavLink
               to="/contact"

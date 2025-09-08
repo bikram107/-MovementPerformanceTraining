@@ -56,8 +56,8 @@ const ContactForm = () => {
           Get In Touch With Us
         </h1>
         <p className="mx-auto max-w-xl text-lg md:text-xl text-gray-700 font-light leading-relaxed">
-          We’re here to help — whether you have questions, feedback, or just
-          want to connect with us.
+          We’re here to help. Whether you have questions, feedback, or just want
+          to connect with us.
         </p>
       </div>
 
@@ -185,19 +185,19 @@ const ContactForm = () => {
 
             {/* Submit */}
             <div className="flex justify-center">
-            <button
-             type="submit"
-             disabled={isSubmitting}
-             className={`bg-orange-500 text-white font-semibold px-10 py-4 text-lg rounded-full hover:bg-orange-600 transition duration-300 ${
-             isSubmitting ? "opacity-60 cursor-not-allowed" : ""
-             }`}
-            >
-            {isSubmitting ? "Submitting..." : "Send Message"}
-            </button>
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`bg-orange-500 text-white font-semibold px-10 py-4 text-lg rounded-full hover:bg-orange-600 transition duration-300 ${
+                  isSubmitting ? "opacity-60 cursor-not-allowed" : ""
+                }`}
+              >
+                {isSubmitting ? "Submitting..." : "Send Message"}
+              </button>
             </div>
           </form>
-            </div>
         </div>
+      </div>
     </section>
   );
 };

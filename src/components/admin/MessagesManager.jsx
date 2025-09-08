@@ -76,7 +76,7 @@ export default function MessagesManager() {
       </div>
 
       {/* Messages Table */}
-      <div className="border border-orange-200 rounded-lg p-4 bg-white shadow-sm">
+      <div className="border border-orange-200 rounded-lg p-3 bg-white shadow-sm">
         {loading ? (
           <p className="text-gray-500">Loading messages...</p>
         ) : (

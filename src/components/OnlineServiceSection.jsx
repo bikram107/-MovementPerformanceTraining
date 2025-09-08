@@ -6,7 +6,6 @@ import nutrition from "../assets/nutrition.jpg";
 import one_on_one from "../assets/one_on_one.jpg";
 import elite from "../assets/elite.jpg";
 
-
 const exploreMoreUrl = "https://pro.everfit.io/Chloe-Barret-1748488826";
 
 const OnlineServiceSection = () => {
@@ -17,7 +16,7 @@ const OnlineServiceSection = () => {
           Discover Our Online Packages
         </h2>
         <p className="text-lg text-gray-600">
-          Train anytime, anywhere — find your perfect package and start your
+          Train anytime, anywhere. Find your perfect package and start your
           journey today!
         </p>
       </div>
@@ -61,7 +60,7 @@ const OnlineServiceSection = () => {
           buttonText="Explore More"
           buttonLink="https://package.everfit.io/DH769033"
           subtitle="Join our forces"
-          />
+        />
         {/* <HomeServiceCard
           title="Custom Nutrition Coaching"
           description="Get personalized meal plans, expert tips, and ongoing guidance to fuel your goals with our online coaching package."

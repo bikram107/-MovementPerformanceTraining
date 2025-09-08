@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 src/MPT_Resources/goConcosleKey.json
+.env

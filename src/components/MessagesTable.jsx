@@ -11,7 +11,7 @@ export function MessagesTable({ messages, onMarkRead }) {
   const handleMarkReadClick = async (id, e) => {
     e.stopPropagation(); // prevent parent div click if any
 
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("Messages")
       .update({ read: true })
       .eq("id", id);
@@ -57,12 +57,12 @@ export function MessagesTable({ messages, onMarkRead }) {
 
             {/* Message content */}
             <div className="flex-1 min-w-0">
-              <header className="flex justify-between items-center mb-1">
+              <header className="flex justify-between items-center mb-1 space-x-2">
                 <h4 className="text-lg font-semibold text-gray-800 truncate">
                   {msg.name}
                 </h4>
                 <time
-                  className="text-sm text-gray-400"
+                  className="text-sm text-gray-400 flex-shrink-0"
                   dateTime={msg.created_at}
                   title={new Date(msg.created_at).toLocaleString()}
                 >
@@ -73,17 +73,17 @@ export function MessagesTable({ messages, onMarkRead }) {
                   })}
                 </time>
               </header>
-              <p className="text-gray-700 text-base mb-1 line-clamp-3">
+              <p className="text-gray-700 text-base mb-1 break-words line-clamp-3">
                 {msg.message}
               </p>
-              <p className="text-xs text-gray-500">{msg.email}</p>
+              <p className="text-xs text-gray-500 break-all">{msg.email}</p>
             </div>
 
             {/* Mark as Read Button for unread */}
             {!msg.read && (
               <button
                 onClick={(e) => handleMarkReadClick(msg.id, e)}
-                className="self-start text-orange-600 font-semibold px-3 py-1 border border-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition"
+                className="self-start text-orange-600 font-semibold px-3 py-1 border border-orange-600 rounded-lg hover:bg-orange-600 hover:text-white transition flex-shrink-0"
                 aria-label="Mark message as read"
               >
                 Mark Read

@@ -33,7 +33,7 @@ const PersonalServiceSection = () => {
 
         <HomeServiceCard
           title="Personalized Fitness Plan"
-          description="Receive a custom workout routine based on your body type, schedule, and preferences — crafted by experts."
+          description="Receive a custom workout routine based on your body type, schedule, and preference,  crafted by experts."
           image={Personalised}
           slideDirection="left"
           buttonText="Book Now"
