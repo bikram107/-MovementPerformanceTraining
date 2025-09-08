@@ -34,7 +34,7 @@ const OnlineServiceSection = () => {
 
         <HomeServiceCard
           title="Boardrider Foundations – Home Edition"
-          description="A home-based strength and mobility training plan using body weight, resistance bands, and dumbbells. Designed for those starting out who want to improve their movement quality, strength, and confidence—all without a gym membership."
+          description="A home-based strength and mobility training plan using body weight, resistance bands, and dumbbells. Designed for those starting out who want to improve their movement quality, strength, and confidence all without a gym membership."
           image={one_on_one}
           slideDirection="left"
           buttonText="Explore More"

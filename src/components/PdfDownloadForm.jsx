@@ -36,10 +36,10 @@ const PdfDownloadForm = ({ isOpen, handleClose }) => {
       return;
     }
 
-    // Trigger download automatically
+    // ✅ Trigger download of imported PDF
     const link = document.createElement("a");
-    link.href = "/assets/fitness-guide.pdf"; // adjust path if needed
-    link.download = "fitness-guide.pdf";
+    link.href = eBook;
+    link.download = "eBook.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
