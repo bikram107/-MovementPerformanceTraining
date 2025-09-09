@@ -11,12 +11,14 @@ const Footer = () => {
           {/* Logo Section */}
           <div className="mb-6 md:mb-0">
             <div className="flex items-center space-x-4">
+              <NavLink to="/">
               <img
-                src={main_logo}
-                className="cursor-pointer"
-                alt="MPT Logo"
-                style={{ height: "60px", width: "auto" }}
+              src={main_logo}
+              className="cursor-pointer"
+              alt="MPT Logo"
+              style={{ height: "60px", width: "auto" }}
               />
+              </NavLink>
             </div>
           </div>
 
