@@ -92,8 +92,6 @@ const HomeServiceCard = ({
           <div className="flex justify-center mt-6">
             <a
               href={buttonLink}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-sm bg-orange-500 text-white px-8 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block"
             >
               {buttonText}

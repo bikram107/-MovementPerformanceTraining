@@ -37,8 +37,6 @@ const ServiceCard = ({
 
         <a
           href={buttonLink}
-          target="_blank"
-          rel="noopener noreferrer"
           className="inline-block bg-orange-500 text-white font-semibold py-2 px-6 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg hover:bg-orange-600 text-center"
           data-aos="zoom-in"
         >

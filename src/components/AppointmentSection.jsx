@@ -51,8 +51,6 @@ const AppointmentSection = () => {
             >
               <a
                 href="https://book.squareup.com/appointments/3csg9f23yp5m96/location/LJC267RMNQ0Z6/services/TR32X4CX7YQG5OKQ46LDX473"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="bg-orange-500 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 hover:shadow-lg"
               >
                 Book a Free Appointment

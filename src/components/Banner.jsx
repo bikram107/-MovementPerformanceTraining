@@ -7,8 +7,6 @@ const Banner = ({ text, backgroundImage, link }) => {
   return (
     <a
       href={link}
-      target="_blank"
-      rel="noopener noreferrer"
       className="block"
     >
       <div className="relative w-full h-20 sm:h-24 md:h-32 lg:h-40 cursor-pointer border-2 border-transparent hover:border-orange-500 hover:shadow-lg hover:scale-105 transform transition-all duration-300 overflow-hidden rounded-xl">

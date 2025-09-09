@@ -39,34 +39,22 @@ export default function PackageList() {
       ) : packages.length === 0 ? (
         <p className="text-center text-gray-500">No packages found.</p>
       ) : (
-        <div className="overflow-hidden rounded-xl shadow-md bg-white">
-          <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-x-auto rounded-xl shadow-md bg-white">
+          <table className="min-w-full table-auto divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Image
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Name
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Description
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Type
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Link
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700">
-                  Actions
-                </th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Image</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Name</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 max-w-xs">Description</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Link</th>
+                <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
               {packages.map((pkg) => (
                 <tr key={pkg.id} className="hover:bg-gray-50 transition">
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4">
                     {pkg.image_url ? (
                       <a
                         href={pkg.image_url}
@@ -84,14 +72,10 @@ export default function PackageList() {
                       <span className="text-gray-400 italic">No Image</span>
                     )}
                   </td>
-                  <td className="px-6 py-4 font-medium text-gray-800">
-                    {pkg.name}
-                  </td>
-                  <td className="px-6 py-4 text-gray-600">{pkg.description}</td>
-                  <td className="px-6 py-4 capitalize text-gray-600">
-                    {pkg.type}
-                  </td>
-                  <td className="px-6 py-4">
+                  <td className="px-4 py-4 font-medium text-gray-800">{pkg.name}</td>
+                  <td className="px-4 py-4 text-gray-600 max-w-xs truncate">{pkg.description}</td>
+                  <td className="px-4 py-4 capitalize text-gray-600">{pkg.type}</td>
+                  <td className="px-4 py-4">
                     <a
                       href={pkg.link}
                       target="_blank"
@@ -101,8 +85,8 @@ export default function PackageList() {
                       {pkg.link}
                     </a>
                   </td>
-                  <td className="px-6 py-4">
-                    <div className="flex gap-3">
+                  <td className="px-4 py-4">
+                    <div className="flex flex-wrap gap-2">
                       <button
                         onClick={() => setEditingPkg(pkg)}
                         className="bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium shadow-sm transition"

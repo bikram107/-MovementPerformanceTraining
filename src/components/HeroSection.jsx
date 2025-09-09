@@ -35,8 +35,6 @@ const HeroSection = () => {
           <div className="mt-8 flex items-center">
             <a
               href="https://pro.everfit.io/Chloe-Barret-1748488826"
-              target="_blank"
-              rel="noopener norefferrer"
               className="inline-block px-6 py-3 text-white font-semibold bg-gray-900 rounded-md hover:bg-gray-700 transition duration-200 mx-2"
             >
               Browse Programs
