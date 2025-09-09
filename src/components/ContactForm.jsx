@@ -86,7 +86,7 @@ const ContactForm = () => {
                 Location
               </h4>
               <p className="text-gray-600 select-text">
-                469 Kawana Way, Birtinya QLD 4575
+                566 Kawana Way, Birtinya QLD 4575
               </p>
             </div>
           </div>
@@ -98,7 +98,7 @@ const ContactForm = () => {
           >
             <iframe
               title="Movement Fitness Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3563.110016738286!2d153.11453461081553!3d-26.740865085948123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b939e7c5306bd61%3A0x67bf78399ce1921c!2s469%20Kawana%20Way%2C%20Birtinya%20QLD%204575!5e0!3m2!1sen!2sau!4v1747015165108!5m2!1sen!2sau"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1215.8611303471782!2d153.11788577374637!3d-26.736825956512476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b939e7b0d574221%3A0x820090cb3c22d564!2sHome%20Central%2C%20566%20Kawana%20Way%2C%20Birtinya%20QLD%204575!5e0!3m2!1sen!2sau!4v1757379229783!5m2!1sen!2sau"
               className="w-full h-full"
               style={{ border: 0 }}
               allowFullScreen

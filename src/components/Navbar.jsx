@@ -45,12 +45,15 @@ const Navbar = () => {
         <div className="container mx-auto flex justify-between items-center p-4">
           {/* Logo with fixed height to preserve navbar height */}
           <div className="flex items-center" style={{ height: "40px" }}>
+            <NavLink to="/">
             <img
-              src={main_logo}
-              alt="Logo"
-              style={{ height: "60px", width: "auto" }}
-              className="cursor-pointer"
+            src={main_logo}
+            alt="Logo"
+            style={{ height: "60px", width: "auto" }}
+            className="cursor-pointer"
             />
+            </NavLink>
+            
           </div>
 
           <div className="md:flex md:mr-40 items-center space-x-10 font-semibold hidden">
