@@ -23,10 +23,10 @@ const BackToTopButton = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-8 right-6 flex flex-col items-center z-50">
+    <div className="fixed bottom-7 right-4 flex flex-col items-center z-50">
       <button
         onClick={scrollToTop}
-        className="bg-orange-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-md hover:bg-orange-600 transition duration-300"
+        className="bg-orange-500 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md hover:bg-orange-600 transition duration-300"
         aria-label="Back to Top"
       >
         <FaChevronUp className="text-xl" />
